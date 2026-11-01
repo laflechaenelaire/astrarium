@@ -31,6 +31,7 @@ jobs:
         run: |
           version=$(cargo metadata --locked --no-deps --format-version 1 | python3 -c 'import json,sys; print(json.load(sys.stdin)["packages"][0]["version"])')
           test "$GITHUB_REF_NAME" = "v$version"
+          test -f "docs/releases/$GITHUB_REF_NAME.md"
       - name: Verify source
         run: |
           cargo fmt --check
@@ -47,4 +48,5 @@ jobs:
         run: |
           gh release create "$GITHUB_REF_NAME" \
             dist/astrarium-*-unknown-linux-gnu.tar.gz dist/SHA256SUMS \
-            --verify-tag --generate-notes --title "Astrarium $GITHUB_REF_NAME"
+            --verify-tag --generate-notes --notes-file "docs/releases/$GITHUB_REF_NAME.md" \
+            --title "Astrarium $GITHUB_REF_NAME"

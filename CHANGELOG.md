@@ -1,13 +1,11 @@
 # Changelog
 
-## Unreleased
+## 0.4.0 — 2026-11-01
 
+- First public release, with a ready-to-run x86-64 Linux binary and SHA-256 checksums.
 - Public repository presentation, English documentation and screenshots.
 - GitHub CI, tagged-release packaging and contributor/issue templates.
 - Catalogue regeneration pinned to an upstream revision.
-
-## 0.4.0 — 2026-11-01
-
 - English by default; Spanish available with `--lang es`.
 - F2 switches language and persists the preference.
 - Localized UI, solar-system names, phases, compass and validation messages.

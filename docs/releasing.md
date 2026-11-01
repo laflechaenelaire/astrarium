@@ -27,7 +27,8 @@ Set the repository's social preview to `assets/social-preview.png` if desired.
 ## Versioned release
 
 1. Update `Cargo.toml`, `Cargo.lock`, `Makefile` and `packaging/PKGBUILD` together.
-2. Move completed changes out of `Unreleased` in `CHANGELOG.md`.
+2. Update `CHANGELOG.md`, add `docs/releases/v<version>.md` with release notes,
+   and update the download version in `README.md`.
 3. Run the checks in `CONTRIBUTING.md`, review the changes and commit them.
 4. Push the matching version tag:
 

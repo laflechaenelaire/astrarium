@@ -29,8 +29,31 @@ astronomical chart: dark green, ivory and muted gold. Built on
 
 ## Start
 
-You need stable Rust, a C compiler and Clang/libclang for the initial build
-([details](#build-and-install)). The resulting binary works offline.
+### Download a ready-to-run binary
+
+For **Omarchy, Arch and other x86-64 Linux systems** with glibc 2.35 or newer,
+download the [latest release](https://github.com/laflechaenelaire/astrarium/releases/latest).
+No Rust or Clang installation is needed to run it.
+
+```sh
+version=0.4.0
+archive="astrarium-$version-x86_64-unknown-linux-gnu.tar.gz"
+url="https://github.com/laflechaenelaire/astrarium/releases/download/v$version"
+curl -fLO "$url/$archive"
+curl -fLO "$url/SHA256SUMS"
+sha256sum --check SHA256SUMS
+tar -xzf "$archive"
+install -Dm755 "${archive%.tar.gz}/astrarium" "$HOME/.local/bin/astrarium"
+"$HOME/.local/bin/astrarium"
+```
+
+Run each step after the previous one succeeds. Once `~/.local/bin` is on your
+`PATH` (as it is on Omarchy), launch with `astrarium`. The binary runs offline.
+
+### Build from source
+
+For other architectures, or to work on the code, use stable Rust, a C compiler
+and Clang/libclang ([details](#build-and-install)).
 
 ```sh
 git clone https://github.com/laflechaenelaire/astrarium.git
@@ -200,6 +223,11 @@ makepkg -si
 
 This builds a local Arch package; it does not publish to AUR or imply official
 Omarchy inclusion.
+
+Omarchy uses Arch's package tools. `makepkg -si` builds the package and installs
+it through `pacman`, including an application-launcher entry. Astrarium is not
+currently published in the AUR; use the release download above for a quick
+installation without compiling.
 
 ## Development
 

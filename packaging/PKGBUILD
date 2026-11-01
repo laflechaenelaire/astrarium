@@ -3,6 +3,7 @@ pkgname=astrarium
 pkgver=0.4.0
 pkgrel=1
 pkgdesc='An offline, keyboard-and-mouse planetarium for your terminal'
+url='https://github.com/laflechaenelaire/astrarium'
 arch=('x86_64' 'aarch64')
 license=('MIT' 'BSD-3-Clause')
 depends=('gcc-libs' 'glibc')
