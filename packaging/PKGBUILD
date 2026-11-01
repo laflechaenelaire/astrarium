@@ -1,0 +1,39 @@
+# Local source package: run `make dist`, then `cd dist && makepkg -si`.
+pkgname=astrarium
+pkgver=0.4.0
+pkgrel=1
+pkgdesc='An offline, keyboard-and-mouse planetarium for your terminal'
+arch=('x86_64' 'aarch64')
+license=('MIT' 'BSD-3-Clause')
+depends=('gcc-libs' 'glibc')
+makedepends=('cargo' 'clang')
+# Cargo handles stripping and Rust LTO. GCC LTO objects from the C engine
+# cannot be consumed by Rust's LLVM linker.
+options=('!debug' '!lto')
+source=("$pkgname-$pkgver.tar.gz")
+sha256sums=('SKIP') # Local generated source archive; pin a checksum when publishing.
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  cargo fetch --locked
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  cargo build --release --frozen
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  cargo test --frozen
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dm755 target/release/astrarium "$pkgdir/usr/bin/astrarium"
+  install -Dm644 packaging/astrarium.desktop "$pkgdir/usr/share/applications/astrarium.desktop"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 data/LICENSE-d3-celestial "$pkgdir/usr/share/licenses/$pkgname/LICENSE-d3-celestial"
+  install -Dm644 data/LICENSE-astronomy-engine "$pkgdir/usr/share/licenses/$pkgname/LICENSE-astronomy-engine"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}

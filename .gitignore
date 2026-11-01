@@ -1,0 +1,10 @@
+/target/
+/dist/
+*.pkg.tar.zst
+/packaging/src/
+/packaging/pkg/
+__pycache__/
+*.py[cod]
+*.swp
+*.swo
+.DS_Store

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Astrarium
+Comment=Explore the sky from your terminal
+Comment[es]=Explorá el cielo desde tu terminal
+Exec=astrarium
+TryExec=astrarium
+Icon=applications-science
+Terminal=true
+Categories=Education;Astronomy;
+Keywords=stars;sky;planetarium;estrellas;cielo;

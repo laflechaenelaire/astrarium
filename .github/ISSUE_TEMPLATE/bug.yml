@@ -1,0 +1,31 @@
+name: Bug report
+description: Something in the sky or terminal is not behaving as expected.
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Astrarium version
+      description: Output of `astrarium --version`.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Linux distribution, terminal and version; mention SSH or tmux if used.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include keys or mouse actions. For sky-position issues, use a reproducible `--lat`, `--lon` and `--at` example (approximate coordinates are fine).
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+      description: Screenshots are helpful for rendering issues.
+    validations:
+      required: true
